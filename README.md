@@ -13,7 +13,7 @@ Path for Dockerfile - https://github.com/rajeev-gudivada/onemuthoot/blob/feature
 2. To build the Docker image for the application use the below command 
    docker build -t rajeevnani9876/onemuthoot .  (tag can be varied)
 
-3. To run the image use below command
+3. To run the image use below command.
     docker run -dit rajeevnani9876/onemuthoot:latest
 
     To view the running containers use docker ps -a
