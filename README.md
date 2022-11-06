@@ -1,46 +1,64 @@
-Assignment
-Welcome to the assignment section for DevOps. We understand that time and resources are limited. Hence the assignments are broken into few levels.
 
-Context
-The sample application is a simple Spring Boot application that helps in storing the detail of the employees. It exposes REST API to CRUD on employee entity. The data is stored in an in memory database (which means that data stored in the database will not survive a server/app restart).
+### Assignment
 
-Prerequisites
-Java 8
-Maven 3
-Git Client (to check out code)
-Postman (to invoke the API of the application)
-Once checked out, use following commands to build and run the application on local machine.
+GiHub URL for the application - https://github.com/rajeev-gudivada/onemuthoot/tree/feature/onemuthoot
 
- cd my-app
- mvn clean install
- cd target
- java -jar my-app-0.0.1-SNAPSHOT.jar
-There is a postman collection. Feel free to use and extend the same to test the API behaviour.
+generated Docker Image from for the application - https://hub.docker.com/repository/docker/rajeevnani9876/onemuthoot
 
-Level - 1 : Dockerize the application
-Create a Dockerfile for the application
-Build the image
-Run the image
-Level - 2 : Build a CD pipeline
-Create a CD pipeline in Jenkins CI server (or any other CI server of your choice)
-As part of the pipeline,
-Check out the code
-Build it
-Check using SonarQube (optional)
-Test the API
-Create Docker image of the same
-Push to Docker Hub
-Notify once the build is completed
-Level - 3 : Provision an environment
-Either manually or through code (like through usage of Terraform) provision the environment
-As part of the environment,
-Create a VPC
-Ensure that the VPC spans at least 2 availability zones
-Create a public subnet
-Create a private subnet
-Provision EC2 instances; refer to app-install.sh; use it as user data to initialize an app on VM startup
-Configure classic Elastic Load Balancer to route traffic to the EC2 instances
-Level - 4 : Deploy the solution
-Complete Level - 3
-Update the VMs to have Docker runtime
-Deploy the image on the VM by downloading it from Docker Hub
+Application URL - http://onemuthoot-1014191001.us-east-1.elb.amazonaws.com/  or http://18.206.191.227/
+
+1. Docker file generated for the application.
+Path for Dockerfile - https://github.com/rajeev-gudivada/onemuthoot/blob/feature/onemuthoot/my-app/Dockerfile
+
+2. To build the Docker image for the application use the below command 
+   docker build -t rajeevnani9876/onemuthoot .  (tag can be varied)
+
+3. To run the image use below command
+    docker run -dit rajeevnani9876/onemuthoot:latest
+
+    To view the running containers use docker ps -a
+
+    image.png
+
+4. To Automate the process of building this docker image and pushing it to DockerHub I wrote a Jenkinsfile which will help us to generate docker image from Dockerfile and pushing it to DockerHub and notifying the build status over email.
+
+    Path for Jenkinsfile - https://github.com/rajeev-gudivada/onemuthoot/blob/feature/onemuthoot/Jenkinsfile
+
+5. To provision this I set up an Infra with required VPC, subnets and load balancer
+   
+   VPC info
+   image.png
+
+    Subnets Info
+    image.png
+
+    Load balancer created
+    image.png
+
+6. Now created an ec2 machine to host this docker Image.
+   -> While launching the EC2 machine passed the startup script as per the requirement 
+       startup script - https://github.com/rajeev-gudivada/onemuthoot/blob/feature/onemuthoot/app-install.sh
+
+    -> After launching the instance make sure install the docker inside VM, use below commands after logging into instance
+        yum install docker
+        systemctl start docker
+
+    -> Now pull the Image from the DockerHub which was generated in previous steps. (make sure you login to the Dockerhub on VM to pull the image)
+       docker pull rajeevnani9876/onemuthoot:latest
+
+    -> Check whether the image is present or not
+           docker images 
+           image.png
+    
+    -> Run the Docker image 
+           docker run -dit rajeevnani9876/onemuthoot:latest
+
+    -> Check for running containers
+            docker ps -a 
+
+    -> We can access the application in two ways
+        1. Using load balancer DNS name
+           http://onemuthoot-1014191001.us-east-1.elb.amazonaws.com/
+        2. Using ec2 public ip
+            http://18.206.191.227/
+       
