@@ -1,11 +1,11 @@
 
 ### Assignment
 
-GiHub URL for the application - https://github.com/rajeev-gudivada/onemuthoot/tree/feature/onemuthoot
+### GiHub URL for the application - https://github.com/rajeev-gudivada/onemuthoot/tree/feature/onemuthoot
 
-generated Docker Image from for the application - https://hub.docker.com/repository/docker/rajeevnani9876/onemuthoot
+### Generated Docker Image from for the application - https://hub.docker.com/repository/docker/rajeevnani9876/onemuthoot
 
-Application URL - http://onemuthoot-1014191001.us-east-1.elb.amazonaws.com/  or http://18.206.191.227/
+### Application URL - http://onemuthoot-1014191001.us-east-1.elb.amazonaws.com/  or http://18.206.191.227/
 
 1. Docker file generated for the application.
 Path for Dockerfile - https://github.com/rajeev-gudivada/onemuthoot/blob/feature/onemuthoot/my-app/Dockerfile
@@ -18,7 +18,8 @@ Path for Dockerfile - https://github.com/rajeev-gudivada/onemuthoot/blob/feature
 
     To view the running containers use docker ps -a
 
-    image.png
+    ![image](https://user-images.githubusercontent.com/117442064/200156902-814fd359-2077-4d85-95cc-ad43e98f5bf6.png)
+
 
 4. To Automate the process of building this docker image and pushing it to DockerHub I wrote a Jenkinsfile which will help us to generate docker image from Dockerfile and pushing it to DockerHub and notifying the build status over email.
 
