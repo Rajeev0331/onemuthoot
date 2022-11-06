@@ -27,15 +27,15 @@ Path for Dockerfile - https://github.com/rajeev-gudivada/onemuthoot/blob/feature
 
 5. To provision this I set up an Infra with required VPC, subnets and load balancer
    
-   VPC info
+   ## VPC info
    ![image](https://user-images.githubusercontent.com/117442064/200156944-50fdbef1-2dee-4487-97d4-b7c1dfa20b4d.png)
 
 
-    Subnets Info
+   ### Subnets Info
     ![image](https://user-images.githubusercontent.com/117442064/200156959-2fb39a2d-1b9c-4c2f-be9d-1c78a12f2ffa.png)
 
 
-    Load balancer created
+   ### Load balancer created
     ![image](https://user-images.githubusercontent.com/117442064/200156969-f675b1af-5a68-4ec4-bb8f-4a6cae48c997.png)
 
 6. Now created an ec2 machine to host this docker Image.
