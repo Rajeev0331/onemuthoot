@@ -8,6 +8,8 @@
 
 ### Application URL - http://onemuthoot-1014191001.us-east-1.elb.amazonaws.com/  or http://18.206.191.227/
 
+### Path for terraform scripts - https://github.com/rajeev-gudivada/onemuthoot/tree/feature/onemuthoot/terraform-managed
+
 1. Docker file generated for the application.
 Path for Dockerfile - https://github.com/rajeev-gudivada/onemuthoot/blob/feature/onemuthoot/my-app/Dockerfile
 
